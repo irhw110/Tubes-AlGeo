@@ -39,6 +39,8 @@ def display():
 	glTranslatef(100,100,0)
 	draw(r,s,t,u);
 
+
+
 	glutSwapBuffers()
 
 
@@ -51,6 +53,8 @@ glClearColor(1.0,1.0,1.0,0.0)
 glOrtho(-a, a, -b, b, 0.0, 1.0)	# Bidang kartesian dengan rentang X dari -500 sampai 500 dan rentang Y dari -500 sampai 500
 
 init()
+glDrawArrays(GL_TRIANGLES,0,3)
+glutSwapBuffers()
 r=input("X1=")
 s=input("Y1=")
 t=input("X2=")
