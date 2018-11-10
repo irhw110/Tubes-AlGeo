@@ -51,7 +51,6 @@ def draw(vertices) :
     glBegin(GL_POLYGON)
     for vertice in vertices:
         glVertex3fv(vertice)
-        print("yes")
     glEnd()
     glutSwapBuffers()
 
