@@ -1,0 +1,52 @@
+import math
+
+def kalimatriks (vertices,transformasi) :
+    brs = []
+
+    for vertice in vertices :
+        kol = []
+        for j in range (len(vertices)) :
+            sum = 0
+            for k in range (0,3) :
+                sum = sum + (vertice[k]*transformasi[j][k])
+            kol.append(sum)
+        brs.append(kol)
+    return brs
+
+def reflect(vertices,str):
+    if (str == "y"):
+		refleksi = [[-1,0,0],[0,1,0],[0,0,1]]
+	elif (str == "x"):
+		refleksi = [[1,0,0],[0,-1,0],[0,0,1]]
+	elif (str == "y=x"):
+		refleksi = [[0,1,0],[1,0,0],[0,0,1]]
+	elif (str == "y=-x"):
+		refleksi = [[0,-1,0],[-1,0,0],[0,0,1]]
+	elif (str == "(a,b)"):
+		refleksi = [[1,0,0],[1,0,0],[0,0,1]]
+	return kalimatriks(vertices,refleksi)
+	
+def costom(vertices,a,b,c,d):
+	kostom = [[a,b,0],[c,d,0],[0,0,1]]
+	return kalimatriks(vertices,kostom)
+	
+def multiple(n):
+	for i in range (0,n):
+		l=inp
+		trans = inp.split(' ')
+		if trans[0] == "translate":
+			trf = translate(vertices,float(trans[1]),float(trans[2]))
+		elif trans[0] == "dilate":
+			trf = dilate(vertices,float(trans[1]))
+		elif trans[0] == 'rotate':
+			trf = rotate(vertices,float(trans[1]),float(trans[2]),float(trans[3]))
+			rot = True
+		elif trans[0] == 'reflect':
+			trf = reflect(vertices,trans[1])
+		elif trans[0] == 'shear':
+			trf = shear(vertices,trans[1],float(trans[2]))
+		elif trans[0] == 'stretch':
+			trf = stretch(vertices,trans[1],float(trans[2]))
+		elif trans[0] == 'custom':
+			trf = custom(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]))
+    
