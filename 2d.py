@@ -1,7 +1,7 @@
 from OpenGL.GL import*
 from OpenGL.GLUT import*
 from OpenGL.GLU import*
-from tr2d import *
+from fungsi2d import *
 import numpy as np
 import serial
 import os
