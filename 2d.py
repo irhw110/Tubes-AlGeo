@@ -19,7 +19,7 @@ def Init_input(vertices) :
         a = []
         a.append(float(point[0]))
         a.append(float(point[1]))
-        a.append(0.0)
+        a.append(1.0)
 
         vertices.append(a)
 
@@ -54,7 +54,7 @@ def draw(vertices) :
     glEnd()
     glutSwapBuffers()
 
-def func(vertices) :
+def func(vertices,default) :
     rot = False
     inp = input("Masukan fungsi : ")
     l=inp
@@ -66,8 +66,9 @@ def func(vertices) :
     elif trans[0] == "dilate":
         trf = dilate(vertices,float(trans[1]))
     elif trans[0] == 'rotate':
+        print(vertices)
         trf = rotate(vertices,float(trans[1]),float(trans[2]),float(trans[3]))
-        rot = True
+        print(trf)
     elif trans[0] == 'reflect':
         trf = reflect(vertices,trans[1])
     elif trans[0] == 'shear':
@@ -93,6 +94,7 @@ vertices = []
 
 glutCreateWindow("openGL Python 2D")
 Init_input(vertices)
+default = vertices
 l = 1
 while l != 0 :
-    func(vertices)
+    vertices=func(vertices,default)
