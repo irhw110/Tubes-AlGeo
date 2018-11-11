@@ -42,3 +42,39 @@ def stretch (vertices,param,k) :
         return kalimatriks(vertices,stretchx)
     elif param == "y" :
         return kalimatriks(vertices,stretchy)
+
+def reflect (vertices,str) :
+    if (str == "y") :
+        refleksi = [[-1,0,0],[0,1,0],[0,0,1]]
+    elif (str == "x") :
+        refleksi = [[1,0,0],[0,-1,0],[0,0,1]]
+    elif (str == "y=x") :
+        refleksi = [[-1,0,0],[0,-1,0],[0,0,1]]
+    elif (str == "(a,b)"):
+        refleksi = [[1,0,0],[0,1,0],[0,0,1]]
+    return kalimatriks(vertices,refleksi)
+
+def custom (vertices,a,b,c,d):
+    kustom = [[-1,0,0],[0,1,0],[0,0,1]]
+    return kalimatriks(vertices,kustom);
+
+def  multiple(n):
+    for i in range (0,n):
+        l=inp
+        trans = inp.split(' ')
+        if trans[0] == "translate":
+            trf = translate(vertices,float(trans[1]),float(trans[2]))
+        elif trans[0] == "dilate":
+            trf = dilate(vertices,float(trans[1]))
+        elif trans[0] == 'rotate':
+            trf = rotate(vertices,float(trans[1]),float(trans[2]),float(trans[3]))
+        elif trans[0] == 'reflect':
+            trf = reflect(vertices,trans[1])
+        elif trans[0] == 'shear':
+            trf = shear(vertices,trans[1],float(trans[2]))
+        elif trans[0] == 'stretch':
+            trf = stretch(vertices,trans[1],float(trans[2]))
+        elif trans[0] == 'custom':
+            trf = custom(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]))
+        vertices = trf
+    return vertices
