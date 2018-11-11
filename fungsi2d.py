@@ -6,7 +6,7 @@ def kalimatriks (vertices,transformasi) :
 
     for vertice in vertices :
         kol = []
-        for j in range (len(vertices)) :
+        for j in range (len(transformasi)) :
             sum = 0
             for k in range (0,3) :
                 sum = sum + (vertice[k]*transformasi[j][k])
