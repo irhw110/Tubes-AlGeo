@@ -1,0 +1,26 @@
+def dilatasi(vertices,k):
+	n = len(vertices)
+	m = len(vertices[0])
+	p = 1;
+
+
+	content1 = vertices[0];
+	content2 = [[k,0,0],[0,k,0],[0,0,1]]
+	
+
+
+	content3 =[]
+	for i in range (0,n):
+		content4 = []
+		for j in range (0,p):
+			res = 0
+			for k in range (0,m):
+				res = res + content1[i][k]*content2[k][j];
+			content4.append(res)
+		content3.append(content4)
+	
+	for i in range (0,n):
+		for j in range (0,p-1):
+			print(content3[i][j],end=' ')
+		print(content3[i][p-1])
+
