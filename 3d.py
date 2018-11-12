@@ -17,6 +17,17 @@ verticies = [
     [-100, 100, 100,1]
     ]
 
+default = [
+    [100, -100, -100,1],
+    [100, 100, -100,1],
+    [-100, 100, -100,1],
+    [-100, -100, -100,1],
+    [100, -100, 100,1],
+    [100, 100, 100,1],
+    [-100, -100, 100,1],
+    [-100, 100, 100,1]
+    ]
+
 edges = (
     (0,1),
     (0,3),
@@ -111,6 +122,6 @@ while True:
         print(verticies)
     elif j == 2 :
         print(verticies)
-        verticies=rotate3(verticies,0,0,1)
+        verticies=rotate3(verticies,'x',45,30,30,30)
         print(verticies)
     pygame.display.flip()

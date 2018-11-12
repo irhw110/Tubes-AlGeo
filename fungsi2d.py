@@ -19,6 +19,11 @@ def translate (vertices,a,b) :
 
     return kalimatriks(vertices,translasi)
 
+def dilate (vertices,k) :
+    dilatasi = [[k,0,0],[0,k,0],[0,0,1]]
+
+    return kalimatriks(vertices,dilatasi)
+
 def rotate (vertices,r,a,b) :
     r = math.radians(r)
     rotasi = [[math.cos(r),-(math.sin(r)),(a*(1-math.cos(r))+(b*math.sin(r)))],[math.sin(r),math.cos(r),(b*(1-math.cos(r))-(a*math.sin(r)))],[0,0,1]]
@@ -55,12 +60,12 @@ def reflect (vertices,str) :
     return kalimatriks(vertices,refleksi)
 
 def custom (vertices,a,b,c,d):
-    kustom = [[-1,0,0],[0,1,0],[0,0,1]]
+    kustom = [[a,b,0],[c,d,0],[0,0,1]]
     return kalimatriks(vertices,kustom);
 
-def  multiple(n):
+def  multiple(vertices,n):
     for i in range (0,n):
-        l=inp
+        inp = input()
         trans = inp.split(' ')
         if trans[0] == "translate":
             trf = translate(vertices,float(trans[1]),float(trans[2]))
