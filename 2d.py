@@ -3,11 +3,6 @@ from OpenGL.GLUT import*
 from OpenGL.GLU import*
 from fungsi2d import *
 import numpy as np
-import serial
-import os
-import threading
-import sys
-import time
 
 def Init_input(vertices) :
     N = int(input('Masukkan jumlah titik sudut : '))
