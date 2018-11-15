@@ -38,14 +38,17 @@ def dilate3 (vertices,k) :
 
     return kalimatriks(vertices,dilatasi)
 
-def shear (vertices,param,k) :
-    shearx = [[1,k,0],[0,1,0],[0,0,1]]
-    sheary = [[1,0,0],[k,1,0],[0,0,1]]
+def shear3 (vertices,param,k) :
+    shearx = [[1,k,k,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
+    sheary = [[1,0,0,0],[k,1,k,0],[0,0,1,0],[0,0,0,1]]
+    shearz = [[1,0,0,0],[0,1,0,0],[k,k,1,0],[0,0,0,1]]
 
     if param == "x" :
         return kalimatriks(vertices,shearx)
     elif param == "y" :
         return kalimatriks(vertices,sheary)
+    elif param == "z" :
+        return kalimatriks(vertices,shearz)
 
 def stretch3 (vertices,param,k) :
     stretchx = [[k,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
@@ -59,15 +62,13 @@ def stretch3 (vertices,param,k) :
     elif param == "z" :
         return kalimatriks(vertices,stretchz)
 
-def reflect (vertices,str) :
-    if (str == "y") :
-        refleksi = [[-1,0,0],[0,1,0],[0,0,1]]
-    elif (str == "x") :
-        refleksi = [[1,0,0],[0,-1,0],[0,0,1]]
-    elif (str == "y=x") :
-        refleksi = [[-1,0,0],[0,-1,0],[0,0,1]]
-    elif (str == "(a,b)"):
-        refleksi = [[1,0,0],[0,1,0],[0,0,1]]
+def reflect3 (vertices,str) :
+    if (str == "xy") :
+        refleksi = [[1,0,0,0],[0,1,0,0],[0,0,-1,0],[0,0,0,1]]
+    elif (str == "xz") :
+        refleksi = [[1,0,0,0],[0,-1,0,0],[0,0,1,0],[0,0,0,1]]
+    elif (str == "yz") :
+        refleksi = [[-1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
     return kalimatriks(vertices,refleksi)
 
 def custom3 (vertices,a,b,c,d,e,f,g,h,i):

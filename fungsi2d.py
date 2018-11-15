@@ -51,13 +51,17 @@ def stretch (vertices,param,k) :
 def reflect (vertices,str) :
     if (str == "y") :
         refleksi = [[-1,0,0],[0,1,0],[0,0,1]]
+        return kalimatriks(vertices,refleksi)
     elif (str == "x") :
         refleksi = [[1,0,0],[0,-1,0],[0,0,1]]
+        return kalimatriks(vertices,refleksi)
     elif (str == "y=x") :
         refleksi = [[-1,0,0],[0,-1,0],[0,0,1]]
-    elif (str == "(a,b)"):
-        refleksi = [[1,0,0],[0,1,0],[0,0,1]]
-    return kalimatriks(vertices,refleksi)
+        return kalimatriks(vertices,refleksi)
+    else :
+        a = str.split(',')
+        refleksi = [[-1,0,0],[0,-1,0],[0,0,1]]
+        return translate(kalimatriks(translate(vertices,float(a[0])*(-1),float(a[1])*(-1)),refleksi),float(a[0]),float(a[1]))
 
 def custom (vertices,a,b,c,d):
     kustom = [[a,b,0],[c,d,0],[0,0,1]]
