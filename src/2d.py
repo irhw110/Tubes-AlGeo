@@ -5,13 +5,10 @@ from fungsi2d import *
 import numpy as np
 
 def Init_input(vertices) :
+#Fungsi untuk menerima input bangun datar yang akan digambar
     N = int(input('Masukkan jumlah titik sudut : '))
 
     for i in range (N):
-        #vertices.append([])
-        # inp = input('(x%d,y%d) '% (i+1,i+1))
-        # print(inp)
-        # point = inp.split(',')
         absis, ordinat = [int(x) for x in raw_input("Enter two numbers here: ").split()]
         a = []
         a.append(float(absis))
@@ -27,7 +24,7 @@ def Init_input(vertices) :
     return vertices
 
 def draw(vertices) :
-
+#Fungsi untuk menggambar ke layar
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glLoadIdentity()
     glMatrixMode(GL_PROJECTION)
@@ -38,6 +35,7 @@ def draw(vertices) :
     glTranslatef(0.0,0.0,-1.4)
     glOrtho(-500, 500, -500, 500, 0.0, 1.0)
 
+    #Menggambar sumbu koordinat x,y
     glBegin(GL_LINES)
     glVertex3f(0.0, -500.0, 0.0)
     glVertex3f(0.0, 500.0, 0.0)
@@ -45,6 +43,7 @@ def draw(vertices) :
     glVertex3f(500.0, 0.0, 0.0)
     glEnd()
 
+    #Menggambar bangun datar
     glBegin(GL_POLYGON)
     for vertice in vertices:
         glVertex3fv(vertice)
@@ -52,7 +51,7 @@ def draw(vertices) :
     glutSwapBuffers()
 
 def func(vertices,default) :
-    rot = False
+#Menu pilihan fungsi
     inp = input("Masukan fungsi : ")
     l=inp
     trans = inp.split(' ')
@@ -83,6 +82,7 @@ def func(vertices,default) :
     return vertices
 
 
+# Main
 glutInit()
 glutInitDisplayMode(GLUT_RGBA | GLUT_ALPHA | GLUT_DOUBLE | GLUT_DEPTH)
 glutInitWindowSize(900,900)
@@ -90,8 +90,10 @@ glutInitWindowPosition(50,50)
 vertices = []
 
 glutCreateWindow("openGL Python 2D")
-Init_input(vertices)
-default = vertices
+Init_input(vertices) # Menerima input bangun datar
+default = vertices  #Menyimpan nilai default
+
+#Menjalankan loop pilihan menu fungsi
 l = 1
 while l != 0 :
     vertices=func(vertices,default)

@@ -90,6 +90,7 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 from lalala import *
 
+#Sisi dari kubus
 verticies = [
     [100, -100, -100,1],
     [100, 100, -100,1],
@@ -101,6 +102,7 @@ verticies = [
     [-100, 100, 100,1]
     ]
 
+#Sisi dari kubus, digunakan untuk reset ke semula
 default = [
     [100, -100, -100,1],
     [100, 100, -100,1],
@@ -112,6 +114,7 @@ default = [
     [-100, 100, 100,1]
     ]
 
+#Titik sudut dari kubus
 edges = (
     (0,1),
     (0,3),
@@ -128,7 +131,7 @@ edges = (
     )
 
 def Line() :
-
+#Fungsi menggambar sumbu koordinat 3d
     glBegin(GL_LINES)
     glVertex3f(0.0, -500.0, 0.0)
     glVertex3f(0.0, 500.0, 0.0)
@@ -138,7 +141,9 @@ def Line() :
     glVertex3f(0.0, 0.0,500.0)
     glEnd()
 
+
 def DelOne(vertices) :
+#Fungsi untuk mengubah kubus yg awalnya matriks 8x4 menjadi 8x3 agar bisa digambar
     a = []
     for i in vertices :
         b = []
@@ -149,7 +154,7 @@ def DelOne(vertices) :
     return a
 
 def Cube(verticies):
-
+#Fungsi untuk menggambar kubus
     b = DelOne(verticies)
 
     glBegin(GL_LINES)
