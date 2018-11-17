@@ -9,11 +9,13 @@ def Init_input(vertices) :
 
     for i in range (N):
         #vertices.append([])
-        inp = input('(x%d,y%d) '% (i+1,i+1))
-        point = inp.split(',')
+        # inp = input('(x%d,y%d) '% (i+1,i+1))
+        # print(inp)
+        # point = inp.split(',')
+        absis, ordinat = [int(x) for x in raw_input("Enter two numbers here: ").split()]
         a = []
-        a.append(float(point[0]))
-        a.append(float(point[1]))
+        a.append(float(absis))
+        a.append(float(ordinat))
         a.append(1.0)
 
         vertices.append(a)
