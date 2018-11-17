@@ -163,54 +163,48 @@ def Cube(verticies):
             glVertex3fv(b[vertex])
     glEnd()
 
-def func(vertices,default) :
-    rot = False
+def func3(vertices,default) :
     inp = input("Masukan fungsi : ")
     l=inp
     trans = inp.split(' ')
     if l == "0" :
         sys.exit()
     elif trans[0] == "translate":
-        trf = translate(vertices,float(trans[1]),float(trans[2]))
+        trf = translate3(vertices,float(trans[1]),float(trans[2]),float(trans[3]))
     elif trans[0] == "dilate":
-        trf = dilate(vertices,float(trans[1]))
+        trf = dilate3(vertices,float(trans[1]))
     elif trans[0] == 'rotate':
         print(vertices)
-        trf = rotate(vertices,float(trans[1]),float(trans[2]),float(trans[3]))
+        trf = rotate3(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]),float(trans[5]))
         print(trf)
     elif trans[0] == 'reflect':
-        trf = reflect(vertices,trans[1])
+        trf = reflect3(vertices,trans[1])
     elif trans[0] == 'shear':
-        trf = shear(vertices,trans[1],float(trans[2]))
+        trf = shear3(vertices,trans[1],float(trans[2]))
     elif trans[0] == 'stretch':
-        trf = stretch(vertices,trans[1],float(trans[2]))
+        trf = stretch3(vertices,trans[1],float(trans[2]))
     elif trans[0] == 'custom':
-        trf = custom(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]))
+        trf = custom3(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]))
     elif trans[0] == 'multiple':
-        trf = multiple(vertices,int(trans[1]))
+        trf = multiple3(vertices,int(trans[1]))
     elif trans[0] == 'reset':
         trf = default
     vertices = trf
-    draw(vertices)
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT) #Clear screen
+    Line()
+    Cube(vertices)
     return vertices
-
 
 pygame.init()
 display = (800,600)
 pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
-gluPerspective(45, ((display[0])/display[1]), 0.1, 1000.0)
+gluPerspective(45, ((display[0])/display[1]), 0.1, 1000.0) # Mengatur perspektif gambar
 glTranslatef(0,0,-500)
-while True:
-    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-    Line()
-    Cube(verticies)
-    j = input()
-    if j == 1 :
-        print(verticies)
-        verticies=translate3(verticies,10,10,10)
-        print(verticies)
-    elif j == 2 :
-        print(verticies)
-        verticies=rotate3(verticies,'x',45,30,30,30)
-        print(verticies)
+Line()
+Cube(verticies)
+
+pygame.display.flip()
+l = 1
+while l != 0 :
+    verticies=func3(verticies,default)
     pygame.display.flip()

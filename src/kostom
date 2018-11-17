@@ -25,11 +25,11 @@ def reflect(vertices,str):
 	elif (str == "(a,b)"):
 		refleksi = [[1,0,0],[1,0,0],[0,0,1]]
 	return kalimatriks(vertices,refleksi)
-	
+
 def costom(vertices,a,b,c,d):
 	kostom = [[a,b,0],[c,d,0],[0,0,1]]
 	return kalimatriks(vertices,kostom)
-	
+
 def multiple(n):
 	for i in range (0,n):
 		l=inp
@@ -49,4 +49,19 @@ def multiple(n):
 			trf = stretch(vertices,trans[1],float(trans[2]))
 		elif trans[0] == 'custom':
 			trf = custom(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]))
-    
+
+
+      while True:
+          glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT) #Clear screen
+          Line() # Gambar sumbu x y z
+          Cube(verticies) # Gambar kubus
+          j = input()
+          if j == 1 :
+              print(verticies)
+              verticies=translate3(verticies,10,10,10)
+              print(verticies)
+          elif j == 2 :
+              print(verticies)
+              verticies=rotate3(verticies,'x',45,30,30,30)
+              print(verticies)
+          pygame.display.flip()

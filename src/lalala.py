@@ -63,6 +63,7 @@ def stretch3 (vertices,param,k) :
         return kalimatriks(vertices,stretchz)
 
 def reflect3 (vertices,str) :
+# Terdapat pilihan refleksi terhadap bidang xy,xz atau yz
     if (str == "xy") :
         refleksi = [[1,0,0,0],[0,1,0,0],[0,0,-1,0],[0,0,0,1]]
     elif (str == "xz") :
