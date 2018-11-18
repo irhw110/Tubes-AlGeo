@@ -20,7 +20,6 @@ def Init_input(vertices) :
     vertices = np.array(vertices)
 
     print(vertices)
-    draw(vertices)
     return vertices
 
 def draw(vertices) :

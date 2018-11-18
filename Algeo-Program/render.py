@@ -4,6 +4,7 @@ from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
+import numpy as np
 
 #Titik sudut dari kubus
 edges = (
@@ -25,12 +26,12 @@ edges = (
 def Line() :
 #Fungsi menggambar sumbu koordinat 3d
     glBegin(GL_LINES)
-    glVertex3f(0.0, -50000.0, 0.0)
-    glVertex3f(0.0, 50000.0, 0.0)
-    glVertex3f(-50000.0, 0.0, 0.0)
-    glVertex3f(50000.0, 0.0, 0.0)
-    glVertex3f(0.0, 0.0,-50000.0)
-    glVertex3f(0.0, 0.0,50000.0)
+    glVertex3f(0.0, -500.0, 0.0)
+    glVertex3f(0.0, 500.0, 0.0)
+    glVertex3f(-500.0, 0.0, 0.0)
+    glVertex3f(500.0, 0.0, 0.0)
+    glVertex3f(0.0, 0.0,-500.0)
+    glVertex3f(0.0, 0.0,500.0)
     glEnd()
 
 def Cube(verticies):
@@ -53,3 +54,27 @@ def DelOne(vertices) :
         b.append(i[2])
         a.append(b)
     return a
+
+def Draw(vertices) :
+    glBegin(GL_POLYGON)
+    for vertice in vertices:
+        glVertex3fv(vertice)
+    glEnd()
+
+def Init_input(vertices) :
+#Fungsi untuk menerima input bangun datar yang akan digambar
+    N = int(input('Masukkan jumlah titik sudut : '))
+
+    for i in range (N):
+        absis, ordinat = [int(x) for x in input("Enter two numbers here: ").split()]
+        a = []
+        a.append(float(absis))
+        a.append(float(ordinat))
+        a.append(1.0)
+
+        vertices.append(a)
+
+    vertices = np.array(vertices)
+
+    print(vertices)
+    return vertices
