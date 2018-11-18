@@ -29,6 +29,17 @@ edges = (
     (5,7)
     )
 
+def Line() :
+#Fungsi menggambar sumbu koordinat 3d
+    glBegin(GL_LINES)
+    glVertex3f(0.0, -500.0, 0.0)
+    glVertex3f(0.0, 500.0, 0.0)
+    glVertex3f(-500.0, 0.0, 0.0)
+    glVertex3f(500.0, 0.0, 0.0)
+    glVertex3f(0.0, 0.0,-500.0)
+    glVertex3f(0.0, 0.0,500.0)
+    glEnd()
+
 def Cube():
     glBegin(GL_LINES)
     for edge in edges:
@@ -50,10 +61,32 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        glTranslatef(0.0,0.0, 0.5)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    glTranslatef(-0.5,0,0)
+                if event.key == pygame.K_RIGHT:
+                    glTranslatef(0.5,0,0)
+
+                if event.key == pygame.K_UP:
+                    glTranslatef(0,1,0)
+                if event.key == pygame.K_DOWN:
+                    glTranslatef(0,-1,0)
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 4:
+                    glTranslatef(0,0,1.0)
+
+                if event.button == 5:
+                    glTranslatef(0,0,-1.0)
+        #glTranslatef(0.0,0.0, 0.5)
+        #glRotatef(1, 3, 1, 1)
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
         Cube()
+        Line()
         pygame.display.flip()
         pygame.time.wait(100)
 
