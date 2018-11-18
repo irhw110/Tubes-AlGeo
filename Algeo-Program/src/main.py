@@ -121,7 +121,11 @@ def threeDimen():
                     glRotatef(1, 1, 0, 0)
                 if event.key == pygame.K_DOWN:
                     glRotatef(-1, 1, 0, 0)
-
+                if event.key == pygame.K_PAGEUP:
+                    glTranslatef(0, 0, 3)
+                if event.key == pygame.K_PAGEDOWN:
+                    glTranslatef(0, 0, -3)
+                
                 if event.key == pygame.K_f:
                     verticies=func3(verticies)
 
