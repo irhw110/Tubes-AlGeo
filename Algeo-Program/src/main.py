@@ -43,7 +43,7 @@ def func3(vertices) :
     elif trans[0] == 'stretch':
         trf = stretch3(vertices,trans[1],float(trans[2]))
     elif trans[0] == 'custom':
-        trf = custom3(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]))
+        trf = custom3(vertices,float(trans[1]),float(trans[2]),float(trans[3]),float(trans[4]),float(trans[5]),float(trans[6]),float(trans[7]),float(trans[8]),float(trans[9]));
     elif trans[0] == 'multiple':
         trf = multiple3(vertices,int(trans[1]))
     elif trans[0] == 'reset':
