@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['/home/naufal/Documents/Programming/Tubes/ALgeo/Tubes-AlGeo/Algeo-Program/src'],
+             pathex=['/home/fajar/Documents/c/Tubes-AlGeo/Algeo-Program/src'],
              binaries=[],
              datas=[],
              hiddenimports=[],
